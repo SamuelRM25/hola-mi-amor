@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: servimedic
+    name: clinova
     env: static
     buildCommand: ""
     startCommand: ""

@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ServiMedic - Tu Farmacia de Confianza</title>
+    <title>Clinova - Tu Farmacia de Confianza</title>
     <!-- Favicon (logo en la pestaña del navegador) -->
-    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <link rel="icon" type="image/jpeg" href="clinova-logo.jpeg">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4FC3F7;
-            /* Celeste */
-            --secondary: #FF9800;
-            /* Naranja */
-            --accent: #FF5722;
-            /* Naranja oscuro */
+            --primary: #3B82C4;
+            /* Cerúleo */
+            --secondary: #F26B4A;
+            /* Coral */
+            --accent: #C84B31;
+            /* Coral oscuro */
             --light: #f8f9fa;
             --dark: #2c3e50;
         }
@@ -84,8 +85,10 @@
         }
 
         .welcome-title {
+            font-family: 'Fraunces', serif;
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             margin-bottom: 15px;
             line-height: 1.2;
         }
@@ -145,6 +148,60 @@
 
             60% {
                 transform: translateY(-5px);
+            }
+        }
+
+        .skip-welcome-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            opacity: 0;
+            animation: skipFadeIn 0.6s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .skip-welcome-btn:hover,
+        .skip-welcome-btn:focus-visible {
+            background: rgba(255, 255, 255, 0.32);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .skip-welcome-btn:focus-visible {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes skipFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            #welcome-screen {
+                transition: none !important;
             }
         }
 
@@ -249,6 +306,9 @@
         }
 
         .section-title {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             position: relative;
             margin-bottom: 50px;
             padding-bottom: 15px;
@@ -290,6 +350,12 @@
             justify-content: space-between;
         }
 
+        .catalogo-card h4 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
         .catalogo-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
@@ -312,8 +378,8 @@
             justify-content: center;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: float 3s ease-in-out infinite;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                box-shadow 0.4s ease;
         }
 
         .catalogo-preview-img {
@@ -329,66 +395,12 @@
         .catalogo-card:hover .catalogo-image {
             transform: scale(1.05) rotate(2deg);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            animation-play-state: paused;
         }
 
         .catalogo-card:hover .catalogo-preview-img {
             transform: scale(1.1) rotate(-2deg);
             filter: brightness(1) contrast(1.2);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-
-            25% {
-                transform: translateY(-8px) rotate(1deg);
-            }
-
-            50% {
-                transform: translateY(-5px) rotate(-1deg);
-            }
-
-            75% {
-                transform: translateY(-10px) rotate(0.5deg);
-            }
-        }
-
-        .catalogo-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .catalogo-card:hover .catalogo-image::before {
-            animation: shine 0.8s ease-in-out;
-        }
-
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-                opacity: 0;
-            }
         }
 
         /* Modales para catálogos */
@@ -470,9 +482,9 @@
         }
 
         .btn-primary-custom:hover {
-            background-color: #29B6F6;
+            background-color: #2E6FA8;
             transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(79, 195, 247, 0.4);
+            box-shadow: 0 7px 20px rgba(59, 130, 196, 0.4);
         }
 
         .btn-secondary-custom {
@@ -486,9 +498,9 @@
         }
 
         .btn-secondary-custom:hover {
-            background-color: #F57C00;
+            background-color: #C84B31;
             transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(255, 152, 0, 0.4);
+            box-shadow: 0 7px 20px rgba(242, 107, 74, 0.4);
         }
 
         .floating-btn {
@@ -535,6 +547,13 @@
             color: white;
             padding: 50px 0 20px;
             margin-top: 50px;
+        }
+
+        .footer h4,
+        .footer h5 {
+            font-family: 'Fraunces', serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         .contact-info {
@@ -788,22 +807,24 @@
     <!-- Pantalla de bienvenida -->
     <div id="welcome-screen">
         <div class="welcome-logo">
-            <img src="servimedic.png" alt="ServiMedic Logo" onerror="this.style.display='none'">
+            <img src="clinova.png" alt="Clinova Logo" onerror="this.style.display='none'">
         </div>
-        <h1 class="welcome-title animate__animated animate__fadeInDown">ServiMedic</h1>
+        <h1 class="welcome-title animate__animated animate__fadeInDown">Clinova</h1>
         <p class="welcome-subtitle animate__animated animate__fadeInUp">Tu salud es nuestra prioridad</p>
         <p class="welcome-text animate__animated animate__fadeIn animate__delay-1s">Deslízate hacia abajo para explorar
             nuestros productos y servicios</p>
         <div class="scroll-indicator animate__animated animate__fadeIn animate__delay-2s">
             <i class="fas fa-chevron-down fa-2x"></i>
         </div>
+        <button type="button" id="skipWelcomeBtn" class="skip-welcome-btn"
+            aria-label="Saltar pantalla de bienvenida">Saltar</button>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="servimedic.png" alt="ServiMedic Logo" onerror="this.style.display='none'">
+                <img src="clinova.png" alt="Clinova Logo" onerror="this.style.display='none'">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -838,7 +859,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active"
-                    style="background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 50%, #0288D1 100%);">
+                    style="background: linear-gradient(135deg, #3B82C4 0%, #2E6FA8 50%, #1E4F7A 100%);">
                     <div class="carousel-caption">
                         <h3>Medicamentos de Calidad</h3>
                         <p>Encuentra los mejores productos para tu salud y bienestar</p>
@@ -851,7 +872,7 @@
                 </div>
                 <!-- Banner 2 - Degradado naranja -->
                 <div class="carousel-item"
-                    style="background: linear-gradient(135deg, #FF9800 0%, #FB8C00 50%, #F57C00 100%);">
+                    style="background: linear-gradient(135deg, #F26B4A 0%, #D85A3D 50%, #C84B31 100%);">
                     <div class="carousel-caption">
                         <h3>Asesoramiento Profesional</h3>
                         <p>Nuestro equipo está listo para ayudarte con cualquier consulta</p>
@@ -864,7 +885,7 @@
                 </div>
                 <!-- Banner 3 - Degradado celeste-naranja -->
                 <div class="carousel-item"
-                    style="background: linear-gradient(135deg, #4FC3F7 0%, #26C6DA 25%, #FF9800 75%, #F57C00 100%);">
+                    style="background: linear-gradient(135deg, #3B82C4 0%, #5B9FB8 25%, #F26B4A 75%, #C84B31 100%);">
                     <div class="carousel-caption">
                         <h3>Entrega Rápida</h3>
                         <p>Recibe tus medicamentos en la comodidad de tu hogar</p>
@@ -902,19 +923,19 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 1.jpeg" class="img-fluid" alt="ServiMedic Suero Detox"
+                            <img src="Imagen 1.jpeg" class="img-fluid" alt="Clinova Suero Detox"
                                 style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 2.jpeg" class="img-fluid" alt="ServiMedic Suero Detox Beneficios"
+                            <img src="Imagen 2.jpeg" class="img-fluid" alt="Clinova Suero Detox Beneficios"
                                 style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="d-flex justify-content-center align-items-center h-100">
-                            <img src="Imagen 3.jpeg" class="img-fluid" alt="ServiMedic Suero Multivitamínico"
+                            <img src="Imagen 3.jpeg" class="img-fluid" alt="Clinova Suero Multivitamínico"
                                 style="width: 95%; object-fit: contain; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
                         </div>
                     </div>
@@ -1054,7 +1075,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 mb-4 mb-md-0">
-                    <h4>ServiMedic</h4>
+                    <h4>Clinova</h4>
                     <p>Tu salud es nuestra prioridad. Ofrecemos medicamentos de calidad con el respaldo de profesionales
                         de la salud.</p>
                 </div>
@@ -1079,7 +1100,7 @@
             </div>
             <hr class="mt-4 mb-4">
             <div class="text-center">
-                <p>&copy; 2025 RS Solutions. Todos los derechos reservados.</p>
+                <p>&copy; 2026 RS Solutions. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1102,7 +1123,7 @@
             target="_blank">
             <i class="fab fa-whatsapp"></i> Sueroterapia
         </a>
-        <a href="#" id="saveContactBtn" onclick="guardarContacto(); return false;" style="background-color: #4FC3F7;">
+        <a href="#" id="saveContactBtn" onclick="guardarContacto(); return false;" style="background-color: #3B82C4;">
             <i class="fas fa-user-plus"></i> Guardar Contacto
         </a>
     </div>
@@ -1686,16 +1707,29 @@
 
     <script>
         // Pantalla de bienvenida
+        function hideWelcomeScreen() {
+            const welcome = document.getElementById('welcome-screen');
+            if (welcome && !welcome.classList.contains('hidden')) {
+                welcome.classList.add('hidden');
+            }
+        }
+
         window.addEventListener('load', function () {
-            setTimeout(function () {
-                document.getElementById('welcome-screen').classList.add('hidden');
-            }, 3000);
+            setTimeout(hideWelcomeScreen, 1500);
         });
 
         // También ocultar al hacer scroll
         window.addEventListener('scroll', function () {
             if (window.scrollY > 50) {
-                document.getElementById('welcome-screen').classList.add('hidden');
+                hideWelcomeScreen();
+            }
+        });
+
+        // Botón "Saltar" bienvenida
+        document.addEventListener('DOMContentLoaded', function () {
+            const skipBtn = document.getElementById('skipWelcomeBtn');
+            if (skipBtn) {
+                skipBtn.addEventListener('click', hideWelcomeScreen);
             }
         });
 
@@ -1711,7 +1745,7 @@
             // Crear el contenido del archivo vCard
             const vcard = `BEGIN:VCARD
 VERSION:3.0
-FN:ServiMedic - Farmacia
+FN:Clinova - Farmacia
 TEL;TYPE=CELL:+50259167747
 NOTE:Tu farmacia de confianza en Huehuetenango
 END:VCARD`;
@@ -1722,7 +1756,7 @@ END:VCARD`;
             // Crear un enlace temporal para descargar
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = 'ServiMedic.vcf';
+            link.download = 'Clinova.vcf';
 
             // Simular el clic para descargar
             document.body.appendChild(link);
@@ -1928,7 +1962,7 @@ END:VCARD`;
                 if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
                     await navigator.share({
                         files: [file],
-                        title: 'Catálogo ServiMedic',
+                        title: 'Catálogo Clinova',
                         text: mensaje
                     });
                     ocultarMenuOpciones();
